@@ -8,7 +8,7 @@
   <!-- SEO -->
   <meta name="description" content="Kubbealtı Cafe – Serdivan Sakarya. Sıcak çaylar, kahveler ve samimi sohbetler için keyifli bir kafe." />
 
-  <!-- Font -->
+  <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -21,7 +21,11 @@
       --accent: #e9f3ee;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
       font-family: 'Inter', sans-serif;
@@ -31,13 +35,13 @@
     }
 
     header {
-      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-        url('https://via.placeholder.com/1200x600');
+      background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+        url('https://images.pexels.com/photos/2299028/pexels-photo-2299028.jpeg');
       background-size: cover;
       background-position: center;
       color: white;
       text-align: center;
-      padding: 5rem 1rem;
+      padding: 5.5rem 1rem;
     }
 
     header h1 {
@@ -46,17 +50,20 @@
     }
 
     header p {
-      font-weight: 300;
       font-size: 1.2rem;
+      font-weight: 300;
+      opacity: 0.95;
     }
 
     main {
       max-width: 1000px;
-      margin: 3rem auto;
+      margin: 3.5rem auto;
       padding: 0 1rem;
     }
 
-    section { margin-bottom: 3.5rem; }
+    section {
+      margin-bottom: 3.5rem;
+    }
 
     h2 {
       font-size: 1.8rem;
@@ -67,8 +74,8 @@
     .card {
       background: white;
       padding: 2rem;
-      border-radius: 14px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      border-radius: 16px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.06);
     }
 
     .menu-grid {
@@ -92,43 +99,53 @@
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       gap: 1rem;
+      margin-bottom: 1.5rem;
     }
 
     .gallery img {
       width: 100%;
-      height: 160px;
+      height: 170px;
       object-fit: cover;
-      border-radius: 10px;
+      border-radius: 12px;
       cursor: pointer;
-      transition: transform 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .gallery img:hover { transform: scale(1.04); }
+    .gallery img:hover {
+      transform: scale(1.04);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
 
     .btn {
       display: inline-block;
-      margin-top: 1rem;
-      padding: 0.6rem 1.4rem;
+      padding: 0.65rem 1.5rem;
       background: var(--primary);
       color: white;
       text-decoration: none;
-      border-radius: 8px;
+      border-radius: 10px;
+      transition: background 0.2s ease;
+    }
+
+    .btn:hover {
+      background: #2f5c45;
     }
 
     iframe {
       width: 100%;
       height: 320px;
       border: none;
-      border-radius: 12px;
+      border-radius: 14px;
+      margin-top: 1rem;
     }
 
     footer {
       text-align: center;
-      padding: 2rem;
-      color: #6b7280;
+      padding: 2.5rem 1rem;
       font-size: 0.9rem;
+      color: #6b7280;
     }
 
+    /* Lightbox */
     #lightbox {
       position: fixed;
       inset: 0;
@@ -142,7 +159,7 @@
     #lightbox img {
       max-width: 90%;
       max-height: 90%;
-      border-radius: 12px;
+      border-radius: 14px;
     }
   </style>
 </head>
@@ -189,14 +206,11 @@
   <section class="card">
     <h2>Galeri</h2>
     <div class="gallery">
-      <img src="https://via.placeholder.com/400x300" onclick="openLightbox(this.src)">
-      <img src="https://via.placeholder.com/400x300" onclick="openLightbox(this.src)">
-      <img src="https://via.placeholder.com/400x300" onclick="openLightbox(this.src)">
+      <img src="https://images.pexels.com/photos/2299028/pexels-photo-2299028.jpeg" loading="lazy" onclick="openLightbox(this.src)">
+      <img src="https://images.pexels.com/photos/2347378/pexels-photo-2347378.jpeg" loading="lazy" onclick="openLightbox(this.src)">
+      <img src="https://images.pexels.com/photos/2575835/pexels-photo-2575835.jpeg" loading="lazy" onclick="openLightbox(this.src)">
+      <img src="https://images.pexels.com/photos/2642842/pexels-photo-2642842.jpeg" loading="lazy" onclick="openLightbox(this.src)">
     </div>
-
-    <a class="btn" href="https://photos.app.goo.gl/ALBUM_LINKI" target="_blank">
-      Tüm Fotoğraflar (Google Photos)
-    </a>
   </section>
 
   <section class="card">
@@ -211,7 +225,7 @@
       src="https://www.google.com/maps?q=Bahçelievler,104.+Sk+No:4+Serdivan+Sakarya&output=embed">
     </iframe>
 
-    <a class="btn" href="https://maps.google.com/?q=Kubbealtı+Serdivan" target="_blank">
+    <a class="btn" href="https://maps.google.com/?q=Kubbealtı+Serdivan" target="_blank" style="margin-top:1rem;">
       Yol Tarifi Al
     </a>
   </section>
@@ -231,6 +245,7 @@
     document.getElementById('lightbox-img').src = src;
     document.getElementById('lightbox').style.display = 'flex';
   }
+
   function closeLightbox() {
     document.getElementById('lightbox').style.display = 'none';
   }
