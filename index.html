@@ -1,31 +1,27 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kubbealtı Çay Ocağı | Serdivan</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kubbealtı Cafe | Serdivan</title>
 
   <!-- SEO -->
-  <meta name="description" content="Kubbealtı Çay Ocağı – Serdivan, Sakarya. Samimi ortam, sıcak çay ve dost sohbetleri." />
+  <meta name="description" content="Kubbealtı Cafe – Serdivan Sakarya. Sıcak çaylar, kahveler ve samimi sohbetler için keyifli bir kafe." />
 
-  <!-- Google Font -->
+  <!-- Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #f8f9fa;
+      --bg: #fafafa;
       --text: #1f2933;
-      --primary: #2f6f4e;
-      --secondary: #e6f2ec;
+      --primary: #3b6f55;
+      --accent: #e9f3ee;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Inter', sans-serif;
@@ -35,143 +31,210 @@
     }
 
     header {
-      background: var(--primary);
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+        url('https://via.placeholder.com/1200x600');
+      background-size: cover;
+      background-position: center;
       color: white;
-      padding: 3rem 1rem;
       text-align: center;
+      padding: 5rem 1rem;
     }
 
     header h1 {
-      font-size: 2.2rem;
+      font-size: 2.8rem;
       margin-bottom: 0.5rem;
     }
 
     header p {
       font-weight: 300;
-      opacity: 0.9;
+      font-size: 1.2rem;
     }
 
     main {
-      max-width: 900px;
+      max-width: 1000px;
       margin: 3rem auto;
       padding: 0 1rem;
     }
 
-    section {
-      margin-bottom: 3rem;
-    }
+    section { margin-bottom: 3.5rem; }
 
     h2 {
+      font-size: 1.8rem;
       color: var(--primary);
       margin-bottom: 1rem;
-      font-size: 1.5rem;
     }
 
     .card {
       background: white;
-      padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      padding: 2rem;
+      border-radius: 14px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
     }
 
-    .info-list {
-      list-style: none;
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
     }
 
-    .info-list li {
-      margin-bottom: 0.75rem;
+    .menu-item {
+      background: var(--accent);
+      padding: 1.2rem;
+      border-radius: 10px;
     }
+
+    .menu-item strong {
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .gallery img:hover { transform: scale(1.04); }
 
     .btn {
       display: inline-block;
       margin-top: 1rem;
-      padding: 0.6rem 1.2rem;
+      padding: 0.6rem 1.4rem;
       background: var(--primary);
       color: white;
       text-decoration: none;
       border-radius: 8px;
-      transition: background 0.2s ease;
-    }
-
-    .btn:hover {
-      background: #255a3f;
     }
 
     iframe {
       width: 100%;
-      height: 300px;
+      height: 320px;
       border: none;
       border-radius: 12px;
     }
 
     footer {
       text-align: center;
-      padding: 2rem 1rem;
-      font-size: 0.9rem;
+      padding: 2rem;
       color: #6b7280;
+      font-size: 0.9rem;
+    }
+
+    #lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    #lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 12px;
     }
   </style>
 </head>
 
 <body>
 
-  <header>
-    <h1>Kubbealtı Çay Ocağı</h1>
-    <p>Serdivan · Sakarya</p>
-  </header>
+<header>
+  <h1>Kubbealtı Cafe</h1>
+  <p>Sıcak İçecekler · Samimi Sohbetler · Serdivan</p>
+</header>
 
-  <main>
+<main>
 
-    <section class="card">
-      <h2>Hakkımızda</h2>
-      <p>
-        Kubbealtı Çay Ocağı, Serdivan’da samimi atmosferi ve sıcak çayıyla
-        dost sohbetlerinin buluşma noktasıdır.
-      </p>
-    </section>
-
-    <section class="card">
-      <h2>Bilgiler</h2>
-      <ul class="info-list">
-        <li><strong>Adres:</strong> Bahçelievler, 104. Sk No:4, Serdivan / Sakarya</li>
-        <li><strong>Çalışma Saatleri:</strong> 12:00 – 23:00</li>
-        <li><strong>Google Puanı:</strong> ★★★★☆ (4.8 / 5)</li>
-      </ul>
-
-      <a class="btn" href="https://maps.google.com/?q=Kubbealtı+Serdivan" target="_blank">
-        Yol Tarifi Al
-      </a>
-    </section>
-    <section class="card">
-    <h2>Fotoğraflar</h2>
-  
+  <section class="card">
+    <h2>Hakkımızda</h2>
     <p>
-      Mekânımıza ait güncel fotoğrafları Google Fotoğraflar albümümüzde
-      inceleyebilirsiniz.
+      Kubbealtı Cafe, Serdivan’da sakin atmosferi, taze çayı ve kahvesiyle
+      dost sohbetlerine ev sahipliği yapan yerel bir buluşma noktasıdır.
     </p>
-  
-    <a class="btn"
-       href="https://photos.app.goo.gl/1pK9KRjp6Zc2ZthG7"
-       target="_blank" rel="noopener">
-      Google Fotoğraflar Albümünü Aç
+  </section>
+
+  <section class="card">
+    <h2>Menü</h2>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <strong>Çay</strong>
+        <span>Demleme · Taze</span>
+      </div>
+      <div class="menu-item">
+        <strong>Türk Kahvesi</strong>
+        <span>Közde & Klasik</span>
+      </div>
+      <div class="menu-item">
+        <strong>Filtre Kahve</strong>
+        <span>Günlük Öğütülmüş</span>
+      </div>
+      <div class="menu-item">
+        <strong>Soğuk İçecekler</strong>
+        <span>Mevsimlik</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Galeri</h2>
+    <div class="gallery">
+      <img src="https://via.placeholder.com/400x300" onclick="openLightbox(this.src)">
+      <img src="https://via.placeholder.com/400x300" onclick="openLightbox(this.src)">
+      <img src="https://via.placeholder.com/400x300" onclick="openLightbox(this.src)">
+    </div>
+
+    <a class="btn" href="https://photos.app.goo.gl/ALBUM_LINKI" target="_blank">
+      Tüm Fotoğraflar (Google Photos)
     </a>
   </section>
 
-    <section class="card">
-      <h2>Google Yorumları</h2>
-      <p>
-        Deneyiminizi bizimle paylaşmak ister misiniz?
-      </p>
-      <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Kubbealtı+Serdivan" target="_blank">
-        Google’da Yorum Yap
-      </a>
-    </section>
+  <section class="card">
+    <h2>Konum & İletişim</h2>
+    <p>
+      Bahçelievler, 104. Sk No:4<br>
+      Serdivan / Sakarya<br>
+      Saatler: 12:00 – 23:00
+    </p>
 
-  </main>
+    <iframe
+      src="https://www.google.com/maps?q=Bahçelievler,104.+Sk+No:4+Serdivan+Sakarya&output=embed">
+    </iframe>
 
-  <footer>
-    © 2026 Kubbealtı Çay Ocağı
-  </footer>
+    <a class="btn" href="https://maps.google.com/?q=Kubbealtı+Serdivan" target="_blank">
+      Yol Tarifi Al
+    </a>
+  </section>
+
+</main>
+
+<footer>
+  © 2026 Kubbealtı Cafe
+</footer>
+
+<div id="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img" src="">
+</div>
+
+<script>
+  function openLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').style.display = 'flex';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').style.display = 'none';
+  }
+</script>
 
 </body>
 </html>
