@@ -63,6 +63,71 @@
 
     <style>
         /* --- CSS Variables & Reset --- */
+        /* ... existing styles ... */
+        
+        /* [ADDED] Navbar Styles */
+        .navbar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem 0;
+            z-index: 10;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -5px;
+            left: 50%;
+            background-color: var(--accent);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Responsive adjustments for navbar */
+        @media (max-width: 600px) {
+            .nav-links {
+                gap: 1rem;
+                padding: 0 1rem;
+            }
+            .nav-links a {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* ... existing styles ... */
+
         :root {
             /* Palette: Dark Stone/Coffee Base, Bronze Accents, Warm Text */
             --bg-color: #231F1E;
@@ -552,6 +617,16 @@
     </style>
 </head>
 <body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="#hakkimizda">Hakkımızda</a></li>
+            <li><a href="#menu">Menü</a></li>
+            <li><a href="#galeri">Atmosfer</a></li>
+            <li><a href="#iletisim">İletişim</a></li>
+        </ul>
+    </nav>
 
     <!-- 1. Hero Section -->
     <header class="hero">
