@@ -324,18 +324,20 @@
         .menu-list li {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start; /* Align to top for multi-line support */
+            align-items: flex-start;
             margin-bottom: 1.5rem;
             border-bottom: 1px solid rgba(62, 54, 50, 0.5);
             padding-bottom: 1rem;
+            flex-wrap: nowrap; /* Prevent wrapping unless on very small screens handled by media query */
         }
 
         .menu-item-info {
             display: flex;
             flex-direction: column;
-            gap: 0.2rem;
-            flex: 1; /* Take remaining space */
-            padding-right: 1rem; /* Space before price */
+            gap: 0.3rem;
+            flex: 1 1 auto; /* Allow growth and shrink */
+            min-width: 0; /* CRITICAL: Enables text wrapping inside flex item */
+            padding-right: 0.8rem;
         }
 
         .menu-item-desc {
@@ -343,7 +345,8 @@
             color: var(--text-muted);
             font-weight: 300;
             font-style: italic;
-            line-height: 1.4;
+            line-height: 1.3;
+            overflow-wrap: break-word; /* Ensure long words break */
         }
 
         .menu-list li:last-child {
@@ -351,30 +354,42 @@
             margin-bottom: 0;
         }
 
-        .menu-list span:first-child {
+        .menu-list span:first-child { /* Targets Product Name */
             font-weight: 500;
             color: var(--text-main);
             font-size: 1.1rem;
             line-height: 1.2;
+            overflow-wrap: break-word;
         }
 
-        .menu-list span:last-child {
+        /* Targets the Price Span (direct child of li) */
+        .menu-list > li > span:last-child {
             color: #FFFFFF;
             font-family: var(--font-heading);
             font-weight: 600;
-            font-size: 1.3rem; /* Slightly smaller for better fit */
+            font-size: 1.3rem;
             letter-spacing: 0.02em;
             background: rgba(198, 156, 109, 0.1);
             padding: 4px 10px;
             border-radius: 4px;
             white-space: nowrap;
-            margin-top: -2px; /* Align visually with first line of text */
+            flex-shrink: 0; /* Prevent price from squishing */
+            margin-top: -2px;
         }
 
-        @media (max-width: 480px) {
-            .menu-list span:first-child { font-size: 1rem; }
-            .menu-list span:last-child { font-size: 1.1rem; padding: 2px 6px; }
-            .menu-category { padding: 1.5rem; }
+        @media (max-width: 400px) {
+            .menu-list li {
+                flex-wrap: wrap; /* Stack on very small screens */
+            }
+            .menu-item-info {
+                padding-right: 0;
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+            .menu-list > li > span:last-child {
+                margin-left: auto; /* Push price to right when stacked */
+                font-size: 1.2rem;
+            }
         }
 
         .menu-note {
