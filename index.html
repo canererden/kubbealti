@@ -260,9 +260,10 @@
         .menu-list li {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 1rem;
-            border-bottom: 1px dotted var(--border-color);
-            padding-bottom: 0.5rem;
+            align-items: baseline;
+            margin-bottom: 1.2rem;
+            border-bottom: 1px solid rgba(62, 54, 50, 0.5);
+            padding-bottom: 0.6rem;
         }
 
         .menu-list li:last-child {
@@ -271,14 +272,20 @@
         }
 
         .menu-list span:first-child {
-            font-weight: 500;
+            font-weight: 400;
             color: var(--text-main);
+            font-size: 1.05rem;
         }
 
         .menu-list span:last-child {
-            color: var(--accent);
+            color: #FFFFFF; /* High contrast for readability */
             font-family: var(--font-heading);
             font-weight: 600;
+            font-size: 1.4rem;
+            letter-spacing: 0.02em;
+            background: rgba(198, 156, 109, 0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
         }
 
         .menu-note {
