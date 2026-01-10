@@ -185,11 +185,12 @@
             to { opacity: 1; }
         }
 
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
+        .hero-logo {
+            max-width: 400px;
+            width: 85%;
+            height: auto;
+            margin-bottom: 0.5rem;
+            filter: drop-shadow(0 10px 10px rgba(0,0,0,0.5));
         }
 
         .hero p {
@@ -480,7 +481,7 @@
     <!-- 1. Hero Section -->
     <header class="hero">
         <div class="container">
-            <h1>Kubbealtı</h1>
+            <img src="logo.svg" alt="Kubbealtı Logo" class="hero-logo">
             <p>Çay Ocağı & Muhabbet</p>
         </div>
         <div class="scroll-indicator" onclick="document.getElementById('hakkimizda').scrollIntoView()">
