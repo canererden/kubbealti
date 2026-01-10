@@ -1,297 +1,493 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kubbealtı Cafe | Serdivan</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kubbealtı | Serdivan</title>
+    <meta name="description" content="Kubbealtı Çay Ocağı – Serdivan, Sakarya. Samimi ortam, sıcak çay ve dost sohbetleri.">
 
-  <!-- SEO -->
-  <meta name="description" content="Kubbealtı Cafe – Serdivan Sakarya. Sıcak çaylar, kahveler ve samimi sohbetler için keyifli bir kafe." />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
-  <!-- Google Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* --- CSS Variables & Reset --- */
+        :root {
+            /* Palette: Dark Stone/Coffee Base, Bronze Accents, Warm Text */
+            --bg-color: #231F1E;
+            --bg-card: #2C2624;
+            --text-main: #E6E1DE;
+            --text-muted: #B0A8A4;
+            --accent: #C69C6D; /* Antique Bronze/Copper */
+            --border-color: #3E3632;
+            
+            --font-heading: 'Cormorant Garamond', serif;
+            --font-body: 'Montserrat', sans-serif;
 
-  <style>
-    :root {
-      --bg: #fafafa;
-      --text: #1f2933;
-      --primary: #3b6f55;
-      --accent: #e9f3ee;
-    }
+            --spacing-section: 6rem;
+            --container-width: 900px;
+        }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
 
-    header {
-      background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
-        url('https://images.pexels.com/photos/2299028/pexels-photo-2299028.jpeg');
-      background-size: cover;
-      background-position: center;
-      color: white;
-      text-align: center;
-      padding: 5.5rem 1rem;
-    }
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            font-weight: 400;
+            line-height: 1.2;
+            color: var(--accent);
+        }
 
-    header h1 {
-      font-size: 2.8rem;
-      margin-bottom: 0.5rem;
-    }
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
 
-    header p {
-      font-size: 1.2rem;
-      font-weight: 300;
-      opacity: 0.95;
-    }
+        a:hover {
+            color: var(--accent);
+        }
 
-    main {
-      max-width: 1000px;
-      margin: 3.5rem auto;
-      padding: 0 1rem;
-    }
+        img {
+            max-width: 100%;
+            display: block;
+        }
 
-    section {
-      margin-bottom: 3.5rem;
-    }
+        /* --- Layout Utilities --- */
+        .container {
+            width: 90%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
 
-    h2 {
-      font-size: 1.8rem;
-      color: var(--primary);
-      margin-bottom: 1rem;
-    }
+        section {
+            padding: var(--spacing-section) 0;
+            border-bottom: 1px solid var(--border-color);
+        }
 
-    .card {
-      background: white;
-      padding: 2rem;
-      border-radius: 16px;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.06);
-    }
+        section:last-of-type {
+            border-bottom: none;
+        }
 
-    .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
-    }
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
 
-    .menu-item {
-      background: var(--accent);
-      padding: 1.2rem;
-      border-radius: 10px;
-    }
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+        }
 
-    .menu-item strong {
-      display: block;
-      margin-bottom: 0.3rem;
-    }
+        .section-header p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-    }
+        /* --- 1. Hero Section --- */
+        .hero {
+            height: 90vh;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(rgba(35, 31, 30, 0.7), rgba(35, 31, 30, 0.7)), 
+                        url('https://images.pexels.com/photos/2299028/pexels-photo-2299028.jpeg') center/cover no-repeat;
+            border-bottom: 1px solid var(--border-color);
+        }
 
-    .gallery img {
-      width: 100%;
-      height: 170px;
-      object-fit: cover;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
 
-    .gallery img:hover {
-      transform: scale(1.04);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    }
+        .hero p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            color: var(--text-main);
+        }
 
-    .btn {
-      display: inline-block;
-      padding: 0.65rem 1.5rem;
-      background: var(--primary);
-      color: white;
-      text-decoration: none;
-      border-radius: 10px;
-      transition: background 0.2s ease;
-    }
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            animation: bounce 2s infinite;
+        }
 
-    .btn:hover {
-      background: #2f5c45;
-    }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
 
-    iframe {
-      width: 100%;
-      height: 320px;
-      border: none;
-      border-radius: 14px;
-      margin-top: 1rem;
-    }
+        /* --- 2. About Section --- */
+        .about-text {
+            text-align: center;
+            font-size: 1.15rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--text-muted);
+        }
 
-    footer {
-      text-align: center;
-      padding: 2.5rem 1rem;
-      font-size: 0.9rem;
-      color: #6b7280;
-    }
+        /* --- 3. Menu Section --- */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
 
-    /* Lightbox */
-    #lightbox {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.85);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-    }
+        .menu-category {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 4px; /* Minimal radius */
+            border: 1px solid var(--border-color);
+        }
 
-    #lightbox img {
-      max-width: 90%;
-      max-height: 90%;
-      border-radius: 14px;
-    }
-  </style>
+        .menu-category h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
+        }
+
+        .menu-list {
+            list-style: none;
+        }
+
+        .menu-list li {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            border-bottom: 1px dotted var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .menu-list li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .menu-list span:first-child {
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .menu-list span:last-child {
+            color: var(--accent);
+            font-family: var(--font-heading);
+            font-weight: 600;
+        }
+
+        .menu-note {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            font-style: italic;
+            color: var(--text-muted);
+        }
+
+        /* --- 4. Gallery Section --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            filter: sepia(20%) contrast(90%);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+            filter: sepia(0%) contrast(100%);
+        }
+
+        /* --- 5. Location & Contact --- */
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .contact-info {
+            font-size: 1.1rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-label {
+            display: block;
+            color: var(--accent);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 350px;
+            border-radius: 2px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            filter: grayscale(100%) invert(90%) contrast(85%); /* Custom minimal map style */
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 3rem 1rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            background-color: var(--bg-card);
+        }
+
+        /* --- Lightbox --- */
+        #lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            cursor: zoom-out;
+        }
+
+        #lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border: 2px solid var(--bg-card);
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            .contact-layout { grid-template-columns: 1fr; }
+            
+            section { padding: 4rem 0; }
+            
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
-
 <body>
 
-<header>
-  <h1>Kubbealtı Cafe</h1>
-  <p>Sıcak İçecekler · Samimi Sohbetler · Serdivan</p>
-</header>
+    <!-- 1. Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <h1>Kubbealtı</h1>
+            <p>Çay Ocağı & Muhabbet</p>
+        </div>
+        <div class="scroll-indicator">Aşağı Kaydır</div>
+    </header>
 
-<main>
+    <!-- 2. About Section -->
+    <section id="hakkimizda">
+        <div class="container">
+            <div class="section-header">
+                <h2>Hakkımızda</h2>
+            </div>
+            <p class="about-text">
+                Kubbealtı, Serdivan’ın kalbinde, zamanın yavaş aktığı bir sığınak. 
+                Taze demlenmiş çay kokusunun samimi sohbetlere karıştığı, 
+                eski ile yeninin buluştuğu sakin bir durak.
+                Burada her bardak çay, dostluğa bir davettir.
+            </p>
+        </div>
+    </section>
 
-  <section class="card">
-    <h2>Hakkımızda</h2>
-    <p>
-      Kubbealtı Cafe, Serdivan’da sakin atmosferi, taze çayı ve kahvesiyle
-      dost sohbetlerine ev sahipliği yapan yerel bir buluşma noktasıdır.
-    </p>
-  </section>
+    <!-- 3. Menu Section -->
+    <section id="menu">
+        <div class="container">
+            <div class="section-header">
+                <h2>Menü</h2>
+                <p>Geleneksel lezzetler, özenli sunumlar.</p>
+            </div>
 
-  <section class="card">
-    <h2>Menü</h2>
-    <div class="menu-grid">
-      <div class="menu-item">
-        <strong>Çay</strong>
-        <span>Demleme · Taze</span>
-      </div>
-      <div class="menu-item">
-        <strong>Türk Kahvesi</strong>
-        <span>Közde & Klasik</span>
-      </div>
-      <div class="menu-item">
-        <strong>Filtre Kahve</strong>
-        <span>Günlük Öğütülmüş</span>
-      </div>
-      <div class="menu-item">
-        <strong>Soğuk İçecekler</strong>
-        <span>Mevsimlik</span>
-      </div>
+            <div class="menu-grid">
+                <!-- Sıcaklar -->
+                <div class="menu-category">
+                    <h3>Sıcaklar</h3>
+                    <ul class="menu-list">
+                        <li><span>Çay (İnce Belli)</span> <span>15 ₺</span></li>
+                        <li><span>Demlik Çay</span> <span>60 ₺</span></li>
+                        <li><span>Türk Kahvesi</span> <span>40 ₺</span></li>
+                        <li><span>Sütlü Kahve</span> <span>45 ₺</span></li>
+                        <li><span>Salep (Kış)</span> <span>50 ₺</span></li>
+                        <li><span>Ihlamur</span> <span>35 ₺</span></li>
+                    </ul>
+                </div>
+
+                <!-- Soğuklar -->
+                <div class="menu-category">
+                    <h3>Soğuklar</h3>
+                    <ul class="menu-list">
+                        <li><span>Ev Yapımı Limonata</span> <span>40 ₺</span></li>
+                        <li><span>Soda</span> <span>15 ₺</span></li>
+                        <li><span>Ayran</span> <span>15 ₺</span></li>
+                        <li><span>Gazoz (Nostaljik)</span> <span>25 ₺</span></li>
+                        <li><span>Su</span> <span>10 ₺</span></li>
+                    </ul>
+                </div>
+
+                <!-- Atıştırmalık -->
+                <div class="menu-category">
+                    <h3>Atıştırmalık</h3>
+                    <ul class="menu-list">
+                        <li><span>Kaşarlı Tost</span> <span>50 ₺</span></li>
+                        <li><span>Karışık Tost</span> <span>60 ₺</span></li>
+                        <li><span>Ev Poğaçası</span> <span>25 ₺</span></li>
+                        <li><span>Günün Keki</span> <span>30 ₺</span></li>
+                        <li><span>Simit</span> <span>15 ₺</span></li>
+                    </ul>
+                </div>
+            </div>
+            <p class="menu-note">* Fiyatlar değişebilir, lütfen kasadan teyit ediniz.</p>
+        </div>
+    </section>
+
+    <!-- 4. Gallery Section -->
+    <section id="galeri">
+        <div class="container">
+            <div class="section-header">
+                <h2>Atmosfer</h2>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="openLightbox('https://images.pexels.com/photos/2299028/pexels-photo-2299028.jpeg')">
+                    <img src="https://images.pexels.com/photos/2299028/pexels-photo-2299028.jpeg" alt="Kubbealtı Interior" loading="lazy">
+                </div>
+                <div class="gallery-item" onclick="openLightbox('https://images.pexels.com/photos/2347378/pexels-photo-2347378.jpeg')">
+                    <img src="https://images.pexels.com/photos/2347378/pexels-photo-2347378.jpeg" alt="Tea Service" loading="lazy">
+                </div>
+                <div class="gallery-item" onclick="openLightbox('https://images.pexels.com/photos/2575835/pexels-photo-2575835.jpeg')">
+                    <img src="https://images.pexels.com/photos/2575835/pexels-photo-2575835.jpeg" alt="Coffee Details" loading="lazy">
+                </div>
+                <div class="gallery-item" onclick="openLightbox('https://images.pexels.com/photos/2642842/pexels-photo-2642842.jpeg')">
+                    <img src="https://images.pexels.com/photos/2642842/pexels-photo-2642842.jpeg" alt="Cafe Ambience" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Contact Section -->
+    <section id="iletisim">
+        <div class="container">
+            <div class="section-header">
+                <h2>Konum & İletişim</h2>
+            </div>
+            <div class="contact-layout">
+                <div class="contact-info">
+                    <p>
+                        <span class="contact-label">Adres</span>
+                        Bahçelievler, 104. Sk No:4<br>
+                        Serdivan / Sakarya
+                    </p>
+                    <p>
+                        <span class="contact-label">Çalışma Saatleri</span>
+                        Her Gün: 12:00 – 23:00
+                    </p>
+                    <p>
+                        <span class="contact-label">Telefon</span>
+                        <a href="tel:+905551234567">0 (555) 123 45 67</a>
+                    </p>
+                    <p style="margin-top: 2rem;">
+                        <a href="https://maps.google.com/?q=Kubbealtı+Serdivan" target="_blank" style="border-bottom: 1px solid var(--accent);">Yol Tarifi Al →</a>
+                    </p>
+                </div>
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps?q=Bahçelievler,104.+Sk+No:4+Serdivan+Sakarya&output=embed" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2026 Kubbealtı. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Tam ekran">
     </div>
-  </section>
 
-  <section class="card">
-    <h2>Galeri</h2>
-    <div class="gallery">
-      <img src="https://images.pexels.com/photos/2299028/pexels-photo-2299028.jpeg" loading="lazy" onclick="openLightbox(this.src)">
-      <img src="https://images.pexels.com/photos/2347378/pexels-photo-2347378.jpeg" loading="lazy" onclick="openLightbox(this.src)">
-      <img src="https://images.pexels.com/photos/2575835/pexels-photo-2575835.jpeg" loading="lazy" onclick="openLightbox(this.src)">
-      <img src="https://images.pexels.com/photos/2642842/pexels-photo-2642842.jpeg" loading="lazy" onclick="openLightbox(this.src)">
-    </div>
-  </section>
+    <script>
+        function openLightbox(src) {
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            lightbox.style.display = 'flex';
+        }
 
-  <section id="menu">
-  <div class="container">
-    <h2>Menü & Fiyatlar</h2>
-    <p class="menu-note">Fiyatlar bilgilendirme amaçlıdır.</p>
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
 
-    <div class="menu-grid">
-
-      <div class="menu-card">
-        <h3>☕ Sıcak İçecekler</h3>
-        <ul>
-          <li><span>Çay</span><span>15 ₺</span></li>
-          <li><span>Demlik Çay</span><span>60 ₺</span></li>
-          <li><span>Türk Kahvesi</span><span>40 ₺</span></li>
-          <li><span>Sütlü Kahve</span><span>45 ₺</span></li>
-          <li><span>Salep</span><span>50 ₺</span></li>
-        </ul>
-      </div>
-
-      <div class="menu-card">
-        <h3>🧊 Soğuk İçecekler</h3>
-        <ul>
-          <li><span>Su</span><span>10 ₺</span></li>
-          <li><span>Ayran</span><span>15 ₺</span></li>
-          <li><span>Gazoz</span><span>25 ₺</span></li>
-          <li><span>Meyve Suyu</span><span>30 ₺</span></li>
-        </ul>
-      </div>
-
-      <div class="menu-card">
-        <h3>🍰 Atıştırmalıklar</h3>
-        <ul>
-          <li><span>Tost</span><span>50 ₺</span></li>
-          <li><span>Poğaça</span><span>25 ₺</span></li>
-          <li><span>Kek</span><span>30 ₺</span></li>
-          <li><span>Bisküvi</span><span>20 ₺</span></li>
-        </ul>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-  <section class="card">
-    <h2>Konum & İletişim</h2>
-    <p>
-      Bahçelievler, 104. Sk No:4<br>
-      Serdivan / Sakarya<br>
-      Saatler: 12:00 – 23:00
-    </p>
-
-    <iframe
-      src="https://www.google.com/maps?q=Bahçelievler,104.+Sk+No:4+Serdivan+Sakarya&output=embed">
-    </iframe>
-
-    <a class="btn" href="https://maps.google.com/?q=Kubbealtı+Serdivan" target="_blank" style="margin-top:1rem;">
-      Yol Tarifi Al
-    </a>
-  </section>
-
-</main>
-
-<footer>
-  © 2026 Kubbealtı Cafe
-</footer>
-
-<div id="lightbox" onclick="closeLightbox()">
-  <img id="lightbox-img" src="">
-</div>
-
-<script>
-  function openLightbox(src) {
-    document.getElementById('lightbox-img').src = src;
-    document.getElementById('lightbox').style.display = 'flex';
-  }
-
-  function closeLightbox() {
-    document.getElementById('lightbox').style.display = 'none';
-  }
-</script>
-
+        // Close on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                closeLightbox();
+            }
+        });
+    </script>
 </body>
 </html>
