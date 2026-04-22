@@ -1,0 +1,37 @@
+<svg width="720" height="220" viewBox="0 0 720 220"
+     xmlns="http://www.w3.org/2000/svg"
+     role="img" aria-label="Kubbealtı Logo">
+
+  <defs>
+    <style>
+      .logo-fill {
+        fill: #c69c6d;
+      }
+      .logo-stroke {
+        fill: none;
+        stroke: #c69c6d;
+        stroke-width: 12; 
+        stroke-linecap: round;
+      }
+    </style>
+  </defs>
+
+  <path class="logo-stroke"
+        d="M260 100
+           C260 20, 400 20, 400 100" />
+
+  <path class="logo-stroke"
+        d="M300 100
+           C300 20, 460 20, 460 100" />
+
+  <text x="360" y="170"
+        text-anchor="middle"
+        class="logo-fill"
+        font-size="96"
+        font-family="Montserrat, Helvetica, Arial, sans-serif"
+        font-weight="500"
+        letter-spacing="-2">
+    kubbealtı
+  </text>
+
+</svg>
