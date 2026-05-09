@@ -313,34 +313,6 @@
             color: var(--text-main);
         }
 
-        .scroll-indicator {
-            position: absolute;
-            bottom: 2rem;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            animation: bounce 2s infinite;
-            cursor: pointer;
-        }
-
-        @keyframes bounce {
-
-            0%,
-            20%,
-            50%,
-            80%,
-            100% {
-                transform: translateY(0);
-            }
-
-            40% {
-                transform: translateY(-10px);
-            }
-
-            60% {
-                transform: translateY(-5px);
-            }
-        }
-
         /* --- 2. About Section --- */
         .about-text {
             text-align: center;
@@ -478,17 +450,27 @@
         /* --- 4. Gallery Section --- */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.2rem;
         }
 
         .gallery-item {
             position: relative;
             overflow: hidden;
-            aspect-ratio: 4/3;
-            border-radius: 8px;
-            border: 1px solid rgba(198, 156, 109, 0.2);
+            aspect-ratio: 4/5;
+            border-radius: 10px;
+            border: 1px solid rgba(198, 156, 109, 0.24);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.24);
             cursor: pointer;
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(35, 31, 30, 0.28), rgba(35, 31, 30, 0.03) 45%, transparent 80%);
+            pointer-events: none;
+            transition: opacity 0.35s ease;
         }
 
         .gallery-item img {
@@ -496,12 +478,16 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.6s ease;
-            filter: sepia(20%) contrast(90%);
+            filter: sepia(10%) contrast(96%) saturate(104%);
         }
 
         .gallery-item:hover img {
-            transform: scale(1.08);
-            filter: sepia(0%) contrast(100%);
+            transform: scale(1.07);
+            filter: sepia(0%) contrast(102%) saturate(110%);
+        }
+
+        .gallery-item:hover::after {
+            opacity: 0.45;
         }
 
         /* --- 5. Instagram Section --- */
@@ -996,9 +982,6 @@
             <img src="logo.svg" alt="Kubbealtı Logo" class="hero-logo">
             <p>Çay & Kahve</p>
         </div>
-        <div class="scroll-indicator" onclick="document.getElementById('hakkimizda').scrollIntoView()">
-            ...
-        </div>
     </header>
 
     <!-- 2. About Section -->
@@ -1326,25 +1309,17 @@
                 <h2>Atmosfer</h2>
             </div>
             <div class="gallery-grid">
-                <div class="gallery-item"
-                    onclick="openLightbox('https://images.pexels.com/photos/2299028/pexels-photo-2299028.jpeg')">
-                    <img src="https://images.pexels.com/photos/2299028/pexels-photo-2299028.jpeg"
-                        alt="Kubbealtı Interior" loading="lazy">
+                <div class="gallery-item" onclick="openLightbox('kubbealti1.jpeg')">
+                    <img src="kubbealti1.jpeg" alt="Kubbealtı Atmosfer 1" loading="lazy">
                 </div>
-                <div class="gallery-item"
-                    onclick="openLightbox('https://images.pexels.com/photos/2347378/pexels-photo-2347378.jpeg')">
-                    <img src="https://images.pexels.com/photos/2347378/pexels-photo-2347378.jpeg" alt="Tea Service"
-                        loading="lazy">
+                <div class="gallery-item" onclick="openLightbox('kubbealti2.jpeg')">
+                    <img src="kubbealti2.jpeg" alt="Kubbealtı Atmosfer 2" loading="lazy">
                 </div>
-                <div class="gallery-item"
-                    onclick="openLightbox('https://images.pexels.com/photos/2575835/pexels-photo-2575835.jpeg')">
-                    <img src="https://images.pexels.com/photos/2575835/pexels-photo-2575835.jpeg" alt="Coffee Details"
-                        loading="lazy">
+                <div class="gallery-item" onclick="openLightbox('kubbealti3.jpeg')">
+                    <img src="kubbealti3.jpeg" alt="Kubbealtı Atmosfer 3" loading="lazy">
                 </div>
-                <div class="gallery-item"
-                    onclick="openLightbox('https://images.pexels.com/photos/2642842/pexels-photo-2642842.jpeg')">
-                    <img src="https://images.pexels.com/photos/2642842/pexels-photo-2642842.jpeg" alt="Cafe Ambience"
-                        loading="lazy">
+                <div class="gallery-item" onclick="openLightbox('kubbealti4.jpeg')">
+                    <img src="kubbealti4.jpeg" alt="Kubbealtı Atmosfer 4" loading="lazy">
                 </div>
             </div>
         </div>
