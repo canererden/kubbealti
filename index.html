@@ -73,19 +73,21 @@
 
         /* [ADDED] Navbar Styles */
         .navbar {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            padding: 2rem 0;
+            padding: 0.9rem 0;
             z-index: 10;
+            background: linear-gradient(180deg, rgba(35, 31, 30, 0.94), rgba(35, 31, 30, 0.58) 72%, transparent);
+            backdrop-filter: blur(4px);
         }
 
         .nav-links {
             list-style: none;
             display: flex;
             justify-content: center;
-            gap: 2.5rem;
+            gap: 1.6rem;
             flex-wrap: wrap;
         }
 
@@ -123,13 +125,33 @@
 
         /* Responsive adjustments for navbar */
         @media (max-width: 600px) {
+            .navbar {
+                padding: 0.6rem 0;
+            }
+
             .nav-links {
-                gap: 1rem;
-                padding: 0 1rem;
+                justify-content: flex-start;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                gap: 0.55rem;
+                padding: 0 0.9rem 0.25rem;
+                scrollbar-width: none;
+            }
+
+            .nav-links::-webkit-scrollbar {
+                display: none;
+            }
+
+            .nav-links li {
+                flex: 0 0 auto;
             }
 
             .nav-links a {
-                font-size: 0.9rem;
+                font-size: 0.82rem;
+                letter-spacing: 0.035em;
+                border: 1px solid var(--border-color);
+                border-radius: 999px;
+                padding: 0.28rem 0.75rem;
             }
         }
 
@@ -149,7 +171,7 @@
             --font-body: 'Montserrat', sans-serif;
 
             --spacing-section: 6rem;
-            --container-width: 900px;
+            --container-width: 1080px;
         }
 
         html {
@@ -168,6 +190,18 @@
             font-family: var(--font-body);
             line-height: 1.7;
             -webkit-font-smoothing: antialiased;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(circle at 15% 10%, rgba(198, 156, 109, 0.08), transparent 32%),
+                radial-gradient(circle at 85% 90%, rgba(198, 156, 109, 0.05), transparent 34%);
+            z-index: -1;
         }
 
         h1,
@@ -205,6 +239,7 @@
         section {
             padding: var(--spacing-section) 0;
             border-bottom: 1px solid var(--border-color);
+            scroll-margin-top: 5rem;
             /* Initial state for scroll animation */
             opacity: 0;
             transform: translateY(30px);
@@ -226,7 +261,7 @@
         }
 
         .section-header h2 {
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
             margin-bottom: 0.5rem;
             letter-spacing: 0.05em;
         }
@@ -246,6 +281,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            padding-top: 4.2rem;
             text-align: center;
             position: relative;
             background: linear-gradient(rgba(35, 31, 30, 0.7), rgba(35, 31, 30, 0.7)),
@@ -320,20 +356,23 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
+            align-items: stretch;
         }
 
         .menu-category {
             background: var(--bg-card);
             padding: 2rem;
-            border-radius: 4px;
+            border-radius: 10px;
             /* Minimal radius */
             border: 1px solid var(--border-color);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            box-shadow: 0 12px 26px rgba(0, 0, 0, 0.22);
         }
 
         .menu-category:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 16px 34px rgba(0, 0, 0, 0.3);
+            border-color: rgba(198, 156, 109, 0.45);
         }
 
         .menu-category h3 {
@@ -448,7 +487,8 @@
             position: relative;
             overflow: hidden;
             aspect-ratio: 4/3;
-            border-radius: 2px;
+            border-radius: 8px;
+            border: 1px solid rgba(198, 156, 109, 0.2);
             cursor: pointer;
         }
 
@@ -476,10 +516,11 @@
         .instagram-post {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
-            border-radius: 4px;
+            border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
         }
 
         .instagram-post:hover {
@@ -521,9 +562,10 @@
             align-items: center;
             justify-content: flex-start;
             gap: 0.75rem;
-            padding: 0.85rem 1rem;
+            padding: 0.7rem 0.9rem;
             color: var(--text-main);
             font-size: 0.9rem;
+            border-top: 1px solid rgba(198, 156, 109, 0.15);
         }
 
         .instagram-badge {
@@ -565,6 +607,11 @@
 
         .contact-info {
             font-size: 1.1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 12px 26px rgba(0, 0, 0, 0.2);
         }
 
         .contact-info p {
@@ -651,9 +698,52 @@
         .map-container {
             width: 100%;
             height: 350px;
-            border-radius: 4px;
+            border-radius: 10px;
             overflow: hidden;
             border: 1px solid var(--border-color);
+            box-shadow: 0 12px 26px rgba(0, 0, 0, 0.2);
+        }
+
+        .reservation-section {
+            background: linear-gradient(rgba(35, 31, 30, 0.82), rgba(35, 31, 30, 0.82)),
+                url('https://images.pexels.com/photos/2299028/pexels-photo-2299028.jpeg') center/cover fixed;
+            text-align: center;
+            color: #fff;
+        }
+
+        .reservation-title {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .reservation-text {
+            font-size: 1.06rem;
+            max-width: 640px;
+            margin: 0 auto 2rem;
+            color: #e6e1de;
+        }
+
+        .reservation-btn {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg-color);
+            padding: 0.95rem 2.2rem;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            box-shadow: 0 4px 15px rgba(198, 156, 109, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .reservation-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(198, 156, 109, 0.44);
+            background: #d4a575;
+            color: var(--bg-color);
         }
 
         .map-container iframe {
@@ -772,13 +862,47 @@
         }
 
         /* --- Responsive --- */
+        @media (max-width: 1024px) {
+            :root {
+                --spacing-section: 5rem;
+            }
+
+            .menu-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+
+            .instagram-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.8rem;
+            :root {
+                --spacing-section: 4.25rem;
+            }
+
+            .container {
+                width: 94%;
+                padding: 0 0.6rem;
+            }
+
+            .hero {
+                min-height: 440px;
+                height: 82vh;
+                padding-top: 4.6rem;
+            }
+
+            .hero-logo {
+                max-width: 360px;
+            }
+
+            .hero p {
+                font-size: 1.05rem;
             }
 
             .contact-layout {
                 grid-template-columns: 1fr;
+                gap: 1.8rem;
             }
 
             section {
@@ -787,6 +911,66 @@
 
             .menu-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .menu-category {
+                padding: 1.4rem;
+            }
+
+            .menu-category h3 {
+                font-size: 1.55rem;
+            }
+
+            .instagram-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 0.9rem;
+            }
+
+            .btn-row {
+                flex-direction: column;
+            }
+
+            .btn-action {
+                min-width: 0;
+                width: 100%;
+            }
+
+            .map-container {
+                height: 280px;
+            }
+
+            .contact-info {
+                padding: 1.15rem;
+            }
+
+            .reservation-text {
+                font-size: 1rem;
+            }
+
+            .reservation-btn {
+                width: 100%;
+                max-width: 360px;
+            }
+
+            #scrollTopBtn {
+                width: 44px;
+                height: 44px;
+                right: 16px;
+                bottom: 16px;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .section-header h2 {
+                letter-spacing: 0.02em;
+            }
+
+            .instagram-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .menu-list>li>span:last-child {
+                font-size: 1.15rem;
             }
         }
     </style>
@@ -1186,16 +1370,14 @@
     </section>
 
     <!-- 6. Reservation Section -->
-    <section id="rezervasyon"
-        style="background: linear-gradient(rgba(35, 31, 30, 0.8), rgba(35, 31, 30, 0.8)), url('https://images.pexels.com/photos/2299028/pexels-photo-2299028.jpeg') center/cover fixed; text-align: center; color: white;">
+    <section id="rezervasyon" class="reservation-section">
         <div class="container">
-            <h2 style="font-size: 2.5rem; color: var(--accent); margin-bottom: 1rem;">Yeriniz Hazır Olsun</h2>
-            <p style="font-size: 1.1rem; max-width: 600px; margin: 0 auto 2rem auto; color: #e6e1de;">
+            <h2 class="reservation-title">Yeriniz Hazır Olsun</h2>
+            <p class="reservation-text">
                 Özel günleriniz, kalabalık arkadaş gruplarınız veya sadece sakin bir kahve molası için rezervasyon
                 yaptırabilirsiniz.
             </p>
-            <a href="https://forms.gle/GTaeMJ9JoXdWVw7h8" target="_blank"
-                style="display: inline-block; background: var(--accent); color: var(--bg-color); padding: 1rem 2.5rem; border-radius: 50px; font-weight: 600; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.05em; transition: transform 0.3s ease, box-shadow 0.3s ease; box-shadow: 0 4px 15px rgba(198, 156, 109, 0.4);">
+            <a href="https://forms.gle/GTaeMJ9JoXdWVw7h8" target="_blank" class="reservation-btn">
                 Rezervasyon Yap
             </a>
         </div>
