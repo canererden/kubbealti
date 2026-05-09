@@ -21,34 +21,65 @@ jobs:
         run: |
           set -euo pipefail
 
-          curl -s 'https://www.instagram.com/api/v1/users/web_profile_info/?username=kubbealtikahve' \
+          if ! curl -fsS 'https://www.instagram.com/api/v1/users/web_profile_info/?username=kubbealtikahve' \
             -H 'x-ig-app-id: 936619743392459' \
-            -H 'user-agent: Mozilla/5.0' > /tmp/ig_raw.json
+            -H 'user-agent: Mozilla/5.0' > /tmp/ig_raw.json; then
+            echo "::warning::Instagram profile API request failed. Keeping existing feed as-is."
+            exit 0
+          fi
 
-          mkdir -p instagram
+          if ! jq -e '.data.user.edge_owner_to_timeline_media.edges | length > 0' /tmp/ig_raw.json >/dev/null; then
+            echo "::warning::Instagram API payload does not contain timeline posts. Keeping existing feed as-is."
+            exit 0
+          fi
 
           jq -r '.data.user.edge_owner_to_timeline_media.edges[:6]
-            | map(.node | {shortcode})
-            | .[].shortcode' /tmp/ig_raw.json > /tmp/ig_codes.txt
+            | .[].node.shortcode' /tmp/ig_raw.json > /tmp/ig_codes.txt
 
+          if [[ ! -s /tmp/ig_codes.txt ]]; then
+            echo "::warning::No shortcode found from Instagram API. Keeping existing feed as-is."
+            exit 0
+          fi
+
+          tmp_dir="$(mktemp -d)"
+          : > /tmp/ig_downloaded_codes.txt
+
+          while read -r code; do
+            if curl -fsSL --retry 2 --retry-delay 2 "https://www.instagram.com/p/${code}/media/?size=l" -o "${tmp_dir}/${code}.jpg"; then
+              echo "${code}" >> /tmp/ig_downloaded_codes.txt
+            else
+              echo "::warning::Image download failed for shortcode ${code}."
+            fi
+          done < /tmp/ig_codes.txt
+
+          if [[ ! -s /tmp/ig_downloaded_codes.txt ]]; then
+            echo "::warning::No Instagram images downloaded successfully. Keeping existing feed as-is."
+            exit 0
+          fi
+
+          mkdir -p instagram
           find instagram -type f -name '*.jpg' -delete
 
           while read -r code; do
-            curl -fsSL "https://www.instagram.com/p/${code}/media/?size=l" -o "instagram/${code}.jpg"
-          done < /tmp/ig_codes.txt
+            cp "${tmp_dir}/${code}.jpg" "instagram/${code}.jpg"
+          done < /tmp/ig_downloaded_codes.txt
 
-          jq '{
-            updatedAt:(now|strftime("%Y-%m-%dT%H:%M:%SZ")),
-            profile:"kubbealtikahve",
-            posts:(.data.user.edge_owner_to_timeline_media.edges[:6]
-              | map(.node | {shortcode})
-              | map({
-                  shortcode,
-                  image:("instagram/" + .shortcode + ".jpg"),
-                  postUrl:("https://www.instagram.com/p/" + .shortcode + "/")
-                })
-            )
-          }' /tmp/ig_raw.json > instagram-feed.json
+          codes_json="$(jq -Rn '[inputs | select(length > 0)]' < /tmp/ig_downloaded_codes.txt)"
+          now_utc="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+
+          jq -n \
+            --arg updatedAt "${now_utc}" \
+            --arg profile "kubbealtikahve" \
+            --argjson codes "${codes_json}" \
+            '{
+              updatedAt: $updatedAt,
+              profile: $profile,
+              posts: ($codes | map({
+                shortcode: .,
+                image: ("instagram/" + . + ".jpg"),
+                postUrl: ("https://www.instagram.com/p/" + . + "/")
+              }))
+            }' > instagram-feed.json
 
       - name: Commit updates
         shell: bash
