@@ -83,12 +83,50 @@
             backdrop-filter: blur(4px);
         }
 
+        .navbar-inner {
+            width: min(96%, var(--container-width));
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .nav-logo {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 160px;
+            height: 56px;
+            border: 1px solid rgba(198, 156, 109, 0.35);
+            border-radius: 12px;
+            background: rgba(35, 31, 30, 0.62);
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28);
+        }
+
+        .nav-logo:hover {
+            transform: translateY(-50%) scale(1.04);
+            border-color: rgba(198, 156, 109, 0.72);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.34);
+        }
+
+        .nav-logo img {
+            width: 132px;
+            height: 38px;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.35));
+        }
+
         .nav-links {
             list-style: none;
             display: flex;
             justify-content: center;
             gap: 1.6rem;
             flex-wrap: wrap;
+            padding-left: 182px;
         }
 
         .nav-links a {
@@ -129,12 +167,28 @@
                 padding: 0.6rem 0;
             }
 
+            .navbar-inner {
+                width: 100%;
+            }
+
+            .nav-logo {
+                left: 0.65rem;
+                width: 124px;
+                height: 42px;
+                border-radius: 10px;
+            }
+
+            .nav-logo img {
+                width: 102px;
+                height: 30px;
+            }
+
             .nav-links {
                 justify-content: flex-start;
                 flex-wrap: nowrap;
                 overflow-x: auto;
                 gap: 0.55rem;
-                padding: 0 0.9rem 0.25rem;
+                padding: 0 0.9rem 0.25rem 8.5rem;
                 scrollbar-width: none;
             }
 
@@ -965,15 +1019,20 @@
 
     <!-- Navigation -->
     <nav class="navbar">
-        <ul class="nav-links">
-            <li><a href="#hakkimizda">Hakkımızda</a></li>
-            <li><a href="#menu">Menü</a></li>
-            <li><a href="#galeri">Galeri</a></li>
-            <li><a href="#instagram">Instagram</a></li>
-            <li><a href="#iletisim">İletişim</a></li>
-            <li><a href="https://forms.gle/GTaeMJ9JoXdWVw7h8" target="_blank"
-                    style="color: var(--accent);">Rezervasyon</a></li>
-        </ul>
+        <div class="navbar-inner">
+            <a href="#" class="nav-logo" aria-label="Anasayfa">
+                <img src="logo.svg" alt="Kubbealtı">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#hakkimizda">Hakkımızda</a></li>
+                <li><a href="#menu">Menü</a></li>
+                <li><a href="#galeri">Galeri</a></li>
+                <li><a href="#instagram">Instagram</a></li>
+                <li><a href="#iletisim">İletişim</a></li>
+                <li><a href="https://forms.gle/GTaeMJ9JoXdWVw7h8" target="_blank"
+                        style="color: var(--accent);">Rezervasyon</a></li>
+            </ul>
+        </div>
     </nav>
 
     <!-- 1. Hero Section -->
