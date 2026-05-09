@@ -465,7 +465,97 @@
             filter: sepia(0%) contrast(100%);
         }
 
-        /* --- 5. Location & Contact --- */
+        /* --- 5. Instagram Section --- */
+        .instagram-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.2rem;
+            align-items: start;
+        }
+
+        .instagram-post {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .instagram-post:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.28);
+        }
+
+        .instagram-link {
+            display: block;
+        }
+
+        .instagram-loading {
+            background: linear-gradient(110deg, #2d2725 8%, #3a3230 18%, #2d2725 33%);
+            background-size: 200% 100%;
+            animation: shimmer 1.25s linear infinite;
+            width: 100%;
+            aspect-ratio: 1/1;
+        }
+
+        @keyframes shimmer {
+            to {
+                background-position-x: -200%;
+            }
+        }
+
+        .instagram-thumb {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .instagram-post:hover .instagram-thumb {
+            transform: scale(1.05);
+        }
+
+        .instagram-meta {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 0.75rem;
+            padding: 0.85rem 1rem;
+            color: var(--text-main);
+            font-size: 0.9rem;
+        }
+
+        .instagram-badge {
+            width: 22px;
+            height: 22px;
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+        }
+
+        .instagram-badge svg {
+            width: 12px;
+            height: 12px;
+            fill: currentColor;
+        }
+
+        .instagram-cta {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .instagram-cta a {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        /* --- 6. Location & Contact --- */
         .contact-layout {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -566,7 +656,7 @@
             border: 1px solid var(--border-color);
         }
 
-        iframe {
+        .map-container iframe {
             width: 100%;
             height: 100%;
             border: none;
@@ -710,6 +800,7 @@
             <li><a href="#hakkimizda">Hakkımızda</a></li>
             <li><a href="#menu">Menü</a></li>
             <li><a href="#galeri">Galeri</a></li>
+            <li><a href="#instagram">Instagram</a></li>
             <li><a href="#iletisim">İletişim</a></li>
             <li><a href="https://forms.gle/GTaeMJ9JoXdWVw7h8" target="_blank"
                     style="color: var(--accent);">Rezervasyon</a></li>
@@ -751,50 +842,181 @@
             </div>
 
             <div class="menu-grid">
-                <!-- Kahveler -->
+                <!-- Sıcak Kahveler -->
                 <div class="menu-category">
-                    <h3>☕ Kahveler</h3>
+                    <h3>☕ Sıcak Kahveler</h3>
+                    <ul class="menu-list">
+                        <li>
+                            <div class="menu-item-info"><span>Espresso</span></div><span>100 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Americano</span></div><span>100 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Long Black</span></div><span>100 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Cafe Crema</span></div><span>100 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Macchiato</span></div><span>120 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Flat White</span></div><span>120 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Latte</span></div><span>120 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Cappucino</span></div><span>120 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Mocha</span></div><span>140 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>White Chocolate Mocha</span></div><span>140 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Caramel Latte</span></div><span>140 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Lotus Latte</span></div><span>140 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Filtre Kahve</span></div><span>100 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Türk Kahvesi</span></div><span>75 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Menengiç Kahvesi</span></div><span>75 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Dibek Kahvesi</span></div><span>75 ₺</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Soğuk Kahveler -->
+                <div class="menu-category">
+                    <h3>🧋 Soğuk Kahveler</h3>
+                    <ul class="menu-list">
+                        <li>
+                            <div class="menu-item-info"><span>Ice Americano</span></div><span>120 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Ice Filtre Kahve</span></div><span>120 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Ice Latte</span></div><span>140 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Ice Caramel Latte</span></div><span>160 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Ice Lotus Latte</span></div><span>160 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Ice Mocha</span></div><span>160 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Ice White Chocolate Latte</span></div><span>160 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Ice Cappuccino</span></div><span>140 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Cortado</span></div><span>120 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Ice Macchiato</span></div><span>140 ₺</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Çaylar -->
+                <div class="menu-category">
+                    <h3>🫖 Çaylar</h3>
+                    <ul class="menu-list">
+                        <li>
+                            <div class="menu-item-info"><span>Çay</span></div><span>20 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Fincan Çay</span></div><span>40 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info">
+                                <span>Oralet</span>
+                                <span class="menu-item-desc">Portakal, Kivi, Kuşburnu, Nar</span>
+                            </div>
+                            <span>20 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Ihlamur</span></div><span>75 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Nane Limon</span></div><span>75 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Kış Çayı</span></div><span>75 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Kuşburnu Çayı</span></div><span>75 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Papatya Çayı</span></div><span>75 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Osmanlı Çayı</span></div><span>75 ₺</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Sıcak İçecekler -->
+                <div class="menu-category">
+                    <h3>♨️ Sıcak İçecekler</h3>
+                    <ul class="menu-list">
+                        <li>
+                            <div class="menu-item-info"><span>Sahlep</span></div><span>140 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Sıcak Çikolata</span></div><span>140 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Sıcak Beyaz Çikolata</span></div><span>140 ₺</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Soğuk İçecekler -->
+                <div class="menu-category">
+                    <h3>🧃 Soğuk İçecekler</h3>
                     <ul class="menu-list">
                         <li>
                             <div class="menu-item-info">
-                                <span>Espresso</span>
-                                <span class="menu-item-desc">Küçük ama güçlü, yoğun aromalı.</span>
+                                <span>Limonata</span>
+                                <span class="menu-item-desc">Ev Yapımı</span>
                             </div>
                             <span>100 ₺</span>
                         </li>
                         <li>
-                            <div class="menu-item-info">
-                                <span>Americano</span>
-                                <span class="menu-item-desc">Espresso üzerine sıcak su eklenerek hazırlanır.</span>
-                            </div>
-                            <span>100 ₺</span>
+                            <div class="menu-item-info"><span>Churchill</span></div><span>100 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Su</span></div><span>15 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Sade Maden Suyu</span></div><span>30 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Meyveli Maden Suyu</span></div><span>35 ₺</span>
                         </li>
                         <li>
                             <div class="menu-item-info">
-                                <span>Latte</span>
-                                <span class="menu-item-desc">Espresso, sıcak süt ve hafif süt köpüğü.</span>
+                                <span>Gazoz</span>
+                                <span class="menu-item-desc">Niğde, Beypazarı, Avşar</span>
                             </div>
-                            <span>120 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info">
-                                <span>Cappuccino</span>
-                                <span class="menu-item-desc">Espresso, sıcak süt ve yoğun süt köpüğü, kakao
-                                    serpiştirmeli.</span>
-                            </div>
-                            <span>120 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info">
-                                <span>Filtre Kahve</span>
-                            </div>
-                            <span>100 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info">
-                                <span>Türk Kahvesi</span>
-                            </div>
-                            <span>60 ₺</span>
+                            <span>35 ₺</span>
                         </li>
                     </ul>
                 </div>
@@ -804,123 +1026,109 @@
                     <h3>🍰 Tatlılar</h3>
                     <ul class="menu-list">
                         <li>
-                            <div class="menu-item-info">
-                                <span>Magnolia</span>
-                            </div>
-                            <span>150 ₺</span>
+                            <div class="menu-item-info"><span>Magnolia</span></div><span>175 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Supangle</span></div><span>175 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Mozaik Pasta</span></div><span>200 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Cheescake</span></div><span>260 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Brownie</span></div><span>220 ₺</span>
                         </li>
                         <li>
                             <div class="menu-item-info">
-                                <span>Brownie</span>
-                                <span class="menu-item-desc">Çikolatalı, yoğun ve nemli.</span>
+                                <span>Cup Tatlılar</span>
+                                <span class="menu-item-desc">Lotus, Yaban Mersini, Çikolata</span>
                             </div>
-                            <span>150 ₺</span>
+                            <span>200 ₺</span>
                         </li>
                         <li>
-                            <div class="menu-item-info">
-                                <span>Kurabiye</span>
-                                <span class="menu-item-desc">Çikolata parçacıklı.</span>
-                            </div>
-                            <span>60 ₺</span>
+                            <div class="menu-item-info"><span>San Sebastian</span></div><span>280 ₺</span>
                         </li>
                     </ul>
                 </div>
 
                 <!-- Atıştırmalıklar -->
                 <div class="menu-category">
-                    <h3>🥪 Atıştırmalıklar</h3>
+                    <h3>🥐 Atıştırmalıklar</h3>
                     <ul class="menu-list">
                         <li>
-                            <div class="menu-item-info">
-                                <span>Karışık Tost</span>
-                                <span class="menu-item-desc">(Kavurma, Kaşar)</span>
-                            </div>
-                            <span>150 ₺</span>
+                            <div class="menu-item-info"><span>Kuruyemiş</span></div><span>100 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Kaşarlı Tost</span></div><span>100 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Sucuklu Kaşarlı Tost</span></div><span>160 ₺</span>
                         </li>
                         <li>
                             <div class="menu-item-info">
-                                <span>Kaşarlı Tost</span>
+                                <span>Meyve Bar</span>
+                                <span class="menu-item-desc">Tarım Kredi</span>
                             </div>
-                            <span>100 ₺</span>
+                            <span>60 ₺</span>
                         </li>
                         <li>
                             <div class="menu-item-info">
-                                <span>Kuruyemiş</span>
+                                <span>Meyve Bar</span>
+                                <span class="menu-item-desc">Züber</span>
                             </div>
-                            <span>75 ₺</span>
+                            <span>90 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Servet Antep Fıstıklı Bar</span></div><span>90 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Servet Fındıklı Bar</span></div><span>60 ₺</span>
                         </li>
                     </ul>
                 </div>
 
-                <!-- Çaylar -->
+                <!-- Kurabiyeler -->
                 <div class="menu-category">
-                    <h3>🍵 Çaylar</h3>
+                    <h3>🍪 Kurabiyeler</h3>
                     <ul class="menu-list">
                         <li>
-                            <div class="menu-item-info">
-                                <span>Siyah Çay</span>
-                                <span class="menu-item-desc">Geleneksel demleme.</span>
-                            </div>
-                            <span>20 ₺</span>
+                            <div class="menu-item-info"><span>Kakaolu Kurabiye</span></div><span>50 ₺</span>
                         </li>
                         <li>
-                            <div class="menu-item-info">
-                                <span>Granül Çay</span>
-                            </div>
-                            <span>20 ₺</span>
+                            <div class="menu-item-info"><span>Kremalı Kurabiye</span></div><span>70 ₺</span>
                         </li>
                         <li>
-                            <div class="menu-item-info">
-                                <span>Bitki Çayları</span>
-                                <span class="menu-item-desc">Papatya · Nane · Rooibos · Hibiskus</span>
-                            </div>
-                            <span>80 ₺</span>
+                            <div class="menu-item-info"><span>Tuzlu Kurabiye</span></div><span>40 ₺</span>
                         </li>
                         <li>
-                            <div class="menu-item-info">
-                                <span>Ihlamur</span>
-                            </div>
-                            <span>35 ₺</span>
+                            <div class="menu-item-info"><span>Ay Kurabiye</span></div><span>40 ₺</span>
+                        </li>
+                        <li>
+                            <div class="menu-item-info"><span>Cookie</span></div><span>80 ₺</span>
                         </li>
                     </ul>
                 </div>
 
-                <!-- Meşrubatlar -->
+                <!-- Dondurmalar -->
                 <div class="menu-category">
-                    <h3>🥤 Meşrubatlar</h3>
+                    <h3>🍦 Dondurmalar</h3>
                     <ul class="menu-list">
                         <li>
-                            <div class="menu-item-info">
-                                <span>Su</span>
-                            </div>
-                            <span>15 ₺</span>
+                            <div class="menu-item-info"><span>1 Top Dondurma</span></div><span>60 ₺</span>
                         </li>
                         <li>
-                            <div class="menu-item-info">
-                                <span>Sade Maden Suyu</span>
-                                <span class="menu-item-desc">(Beypazarı · İnişdibi · Kızılay)</span>
-                            </div>
-                            <span>30 ₺</span>
+                            <div class="menu-item-info"><span>Dondurma Kg</span></div><span>800 ₺</span>
                         </li>
                         <li>
-                            <div class="menu-item-info">
-                                <span>Meyve Aromalı Maden Suyu</span>
-                            </div>
-                            <span>35 ₺</span>
+                            <div class="menu-item-info"><span>Kornet Külah</span></div><span>10 ₺</span>
                         </li>
                         <li>
-                            <div class="menu-item-info">
-                                <span>Gazoz</span>
-                                <span class="menu-item-desc">(Uludağ · Niğde · Avşar Limon)</span>
-                            </div>
-                            <span>35 ₺</span>
+                            <div class="menu-item-info"><span>Kornet Tabak</span></div><span>20 ₺</span>
                         </li>
                         <li>
-                            <div class="menu-item-info">
-                                <span>Kola / Portakal</span>
-                                <span class="menu-item-desc">(Sarıyer Kola · Sarıyer Portakal)</span>
-                            </div>
-                            <span>35 ₺</span>
+                            <div class="menu-item-info"><span>Kağıt Helva Dondurma</span></div><span>200 ₺</span>
                         </li>
                     </ul>
                 </div>
@@ -959,7 +1167,25 @@
         </div>
     </section>
 
-    <!-- 5. Reservation Section -->
+    <!-- 5. Instagram Section -->
+    <section id="instagram">
+        <div class="container">
+            <div class="section-header">
+                <h2>Instagram'da Son Gönderiler</h2>
+                <p>Kubbealtı'ndan anlar, etkinlikler ve günlük paylaşımlar.</p>
+            </div>
+
+            <div id="instagram-grid" class="instagram-grid" aria-live="polite"></div>
+
+            <p class="instagram-cta">
+                Daha fazlası için
+                <a href="https://www.instagram.com/kubbealtikahve/" target="_blank"
+                    rel="noopener noreferrer">@kubbealtikahve</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- 6. Reservation Section -->
     <section id="rezervasyon"
         style="background: linear-gradient(rgba(35, 31, 30, 0.8), rgba(35, 31, 30, 0.8)), url('https://images.pexels.com/photos/2299028/pexels-photo-2299028.jpeg') center/cover fixed; text-align: center; color: white;">
         <div class="container">
@@ -975,7 +1201,7 @@
         </div>
     </section>
 
-    <!-- 6. Contact Section -->
+    <!-- 7. Contact Section -->
     <section id="iletisim">
         <div class="container">
             <div class="section-header">
@@ -1092,6 +1318,89 @@
                 closeLightbox();
             }
         });
+
+        const fallbackInstagramPosts = [
+            {
+                image: 'https://images.pexels.com/photos/2299028/pexels-photo-2299028.jpeg',
+                postUrl: 'https://www.instagram.com/kubbealtikahve/'
+            },
+            {
+                image: 'https://images.pexels.com/photos/2347378/pexels-photo-2347378.jpeg',
+                postUrl: 'https://www.instagram.com/kubbealtikahve/'
+            },
+            {
+                image: 'https://images.pexels.com/photos/2575835/pexels-photo-2575835.jpeg',
+                postUrl: 'https://www.instagram.com/kubbealtikahve/'
+            },
+            {
+                image: 'https://images.pexels.com/photos/2642842/pexels-photo-2642842.jpeg',
+                postUrl: 'https://www.instagram.com/kubbealtikahve/'
+            },
+            {
+                image: 'https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg',
+                postUrl: 'https://www.instagram.com/kubbealtikahve/'
+            },
+            {
+                image: 'https://images.pexels.com/photos/374757/pexels-photo-374757.jpeg',
+                postUrl: 'https://www.instagram.com/kubbealtikahve/'
+            }
+        ];
+
+        function createInstagramCard(post, index) {
+            const article = document.createElement('article');
+            article.className = 'instagram-post';
+
+            const safeUrl = post.postUrl || `https://www.instagram.com/p/${post.shortcode}/`;
+            const safeImage = post.image || `instagram/${post.shortcode}.jpg`;
+
+            article.innerHTML = `
+                <a class="instagram-link" href="${safeUrl}" target="_blank" rel="noopener noreferrer" aria-label="Instagram gönderisi ${index + 1}">
+                    <img class="instagram-thumb" src="${safeImage}" alt="Kubbealtı Instagram Gönderisi ${index + 1}" loading="lazy">
+                    <div class="instagram-meta">
+                        <span class="instagram-badge" aria-hidden="true">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5a4.25 4.25 0 0 0 4.25 4.25h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5a4.25 4.25 0 0 0-4.25-4.25h-8.5zm8.63 1.94a1.13 1.13 0 1 1 0 2.26 1.13 1.13 0 0 1 0-2.26zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5A3.5 3.5 0 1 0 12 15.5 3.5 3.5 0 0 0 12 8.5z"/>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+            `;
+
+            return article;
+        }
+
+        function renderInstagramPosts(posts) {
+            const grid = document.getElementById('instagram-grid');
+
+            if (!grid) return;
+
+            grid.innerHTML = '';
+            posts.slice(0, 6).forEach((post, index) => {
+                grid.appendChild(createInstagramCard(post, index));
+            });
+        }
+
+        async function loadInstagramPosts() {
+            try {
+                const response = await fetch(`instagram-feed.json?v=${Date.now()}`, {cache: 'no-store'});
+                if (!response.ok) {
+                    throw new Error('Feed file missing');
+                }
+
+                const data = await response.json();
+                const posts = Array.isArray(data.posts) ? data.posts : [];
+
+                if (posts.length === 0) {
+                    throw new Error('No posts in feed');
+                }
+
+                renderInstagramPosts(posts);
+            } catch (error) {
+                renderInstagramPosts(fallbackInstagramPosts);
+            }
+        }
+
+        loadInstagramPosts();
 
         // --- Scroll to Top & Reveal Animation Logic ---
         const scrollTopBtn = document.getElementById("scrollTopBtn");

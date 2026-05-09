@@ -1,0 +1,66 @@
+name: Update Instagram Feed
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh-feed:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch latest Instagram posts
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          curl -s 'https://www.instagram.com/api/v1/users/web_profile_info/?username=kubbealtikahve' \
+            -H 'x-ig-app-id: 936619743392459' \
+            -H 'user-agent: Mozilla/5.0' > /tmp/ig_raw.json
+
+          mkdir -p instagram
+
+          jq -r '.data.user.edge_owner_to_timeline_media.edges[:6]
+            | map(.node | {shortcode})
+            | .[].shortcode' /tmp/ig_raw.json > /tmp/ig_codes.txt
+
+          find instagram -type f -name '*.jpg' -delete
+
+          while read -r code; do
+            curl -fsSL "https://www.instagram.com/p/${code}/media/?size=l" -o "instagram/${code}.jpg"
+          done < /tmp/ig_codes.txt
+
+          jq '{
+            updatedAt:(now|strftime("%Y-%m-%dT%H:%M:%SZ")),
+            profile:"kubbealtikahve",
+            posts:(.data.user.edge_owner_to_timeline_media.edges[:6]
+              | map(.node | {shortcode})
+              | map({
+                  shortcode,
+                  image:("instagram/" + .shortcode + ".jpg"),
+                  postUrl:("https://www.instagram.com/p/" + .shortcode + "/")
+                })
+            )
+          }' /tmp/ig_raw.json > instagram-feed.json
+
+      - name: Commit updates
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- instagram-feed.json instagram; then
+            echo 'No feed changes.'
+            exit 0
+          fi
+
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add instagram-feed.json instagram
+          git commit -m 'chore: refresh instagram feed'
+          git push
