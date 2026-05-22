@@ -743,6 +743,70 @@
             box-shadow: 0 12px 26px rgba(0, 0, 0, 0.2);
         }
 
+        /* --- Calendar Container --- */
+        .calendar-container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .calendar-iframe-wrapper {
+            position: relative;
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #ffffff;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .calendar-desktop {
+            display: block;
+            width: 100%;
+            height: 600px;
+            border: none;
+            filter: invert(90%) hue-rotate(15deg) brightness(90%) contrast(105%) saturate(85%);
+        }
+
+        .calendar-mobile {
+            display: none;
+            width: 100%;
+            height: 480px;
+            border: none;
+            filter: invert(90%) hue-rotate(15deg) brightness(90%) contrast(105%) saturate(85%);
+        }
+
+        .calendar-actions {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .calendar-btn {
+            max-width: 320px;
+        }
+
+        @media (max-width: 768px) {
+            .calendar-desktop {
+                display: none;
+            }
+            .calendar-mobile {
+                display: block;
+            }
+            .calendar-container {
+                padding: 1rem;
+                gap: 1rem;
+            }
+        }
+
         .reservation-section {
             background: linear-gradient(rgba(35, 31, 30, 0.82), rgba(35, 31, 30, 0.82)),
                 url('https://images.pexels.com/photos/2299028/pexels-photo-2299028.jpeg') center/cover fixed;
@@ -1028,6 +1092,7 @@
                 <li><a href="#menu">Menü</a></li>
                 <li><a href="#galeri">Galeri</a></li>
                 <li><a href="#instagram">Instagram</a></li>
+                <li><a href="#takvim">Etkinlikler</a></li>
                 <li><a href="#iletisim">İletişim</a></li>
                 <li><a href="https://forms.gle/GTaeMJ9JoXdWVw7h8" target="_blank"
                         style="color: var(--accent);">Rezervasyon</a></li>
@@ -1402,7 +1467,36 @@
         </div>
     </section>
 
-    <!-- 6. Reservation Section -->
+    <!-- 6. Events / Calendar Section -->
+    <section id="takvim">
+        <div class="container">
+            <div class="section-header">
+                <h2>Etkinlik Takvimi</h2>
+                <p>Kubbealtı'ndaki güncel söyleşiler, buluşmalar ve özel etkinlik programlarını takip edin.</p>
+            </div>
+            
+            <div class="calendar-container">
+                <div class="calendar-iframe-wrapper">
+                    <!-- Desktop Calendar (Month View) -->
+                    <iframe class="calendar-desktop" src="https://calendar.google.com/calendar/embed?src=kubbealtiserdivan%40gmail.com&ctz=Europe%2FIstanbul&hl=tr&wkst=2&showTitle=0&showPrint=0&showCalendars=0&showTz=0&bgcolor=%23231F1E" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
+                    
+                    <!-- Mobile Calendar (Agenda View) -->
+                    <iframe class="calendar-mobile" src="https://calendar.google.com/calendar/embed?src=kubbealtiserdivan%40gmail.com&ctz=Europe%2FIstanbul&hl=tr&wkst=2&showTitle=0&showPrint=0&showCalendars=0&showTz=0&mode=AGENDA&bgcolor=%23231F1E" width="100%" height="480" frameborder="0" scrolling="no"></iframe>
+                </div>
+                
+                <div class="calendar-actions">
+                    <a href="https://calendar.google.com/calendar/render?cid=a3ViYmVhbHRpc2VyZGl2YW5AZ21haWwuY29t" target="_blank" rel="noopener noreferrer" class="btn-action btn-outline calendar-btn">
+                        <svg style="width: 20px; height: 20px; fill: currentColor; margin-right: 8px; vertical-align: middle;" viewBox="0 0 24 24">
+                            <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zm-7 5h5v5h-5z"/>
+                        </svg>
+                        Google Takvim'e Ekle
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Reservation Section -->
     <section id="rezervasyon" class="reservation-section">
         <div class="container">
             <h2 class="reservation-title">Yeriniz Hazır Olsun</h2>
@@ -1416,7 +1510,7 @@
         </div>
     </section>
 
-    <!-- 7. Contact Section -->
+    <!-- 8. Contact Section -->
     <section id="iletisim">
         <div class="container">
             <div class="section-header">
