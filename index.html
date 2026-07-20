@@ -501,6 +501,54 @@
             color: var(--text-muted);
         }
 
+
+        /* --- Tabs --- */
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .menu-tab-btn {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            padding: 0.6rem 1.5rem;
+            border-radius: 999px;
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .menu-tab-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .menu-tab-btn.active {
+            background: var(--accent);
+            color: var(--bg-color);
+            border-color: var(--accent);
+            font-weight: 600;
+        }
+
+        .menu-tab-content {
+            display: none;
+            animation: fadeInTab 0.4s ease-out forwards;
+        }
+
+        .menu-tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeInTab {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         /* --- 4. Gallery Section --- */
         .gallery-grid {
             display: grid;
@@ -1131,298 +1179,181 @@
                 <p>Geleneksel lezzetler, özenli sunumlar.</p>
             </div>
 
-            <div class="menu-grid">
-                <!-- Sıcak Kahveler -->
-                <div class="menu-category">
-                    <h3>☕ Sıcak Kahveler</h3>
-                    <ul class="menu-list">
-                        <li>
-                            <div class="menu-item-info"><span>Espresso</span></div><span>100 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Americano</span></div><span>100 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Long Black</span></div><span>100 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Cafe Crema</span></div><span>100 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Macchiato</span></div><span>120 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Flat White</span></div><span>120 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Latte</span></div><span>120 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Cappucino</span></div><span>120 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Mocha</span></div><span>140 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>White Chocolate Mocha</span></div><span>140 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Caramel Latte</span></div><span>140 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Lotus Latte</span></div><span>140 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Filtre Kahve</span></div><span>100 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Türk Kahvesi</span></div><span>75 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Menengiç Kahvesi</span></div><span>75 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Dibek Kahvesi</span></div><span>75 ₺</span>
-                        </li>
-                    </ul>
-                </div>
+            <div class="menu-tabs">
+                <button class="menu-tab-btn active" onclick="openMenuTab(event, 'tab-kahveler')">☕ Kahveler</button>
+                <button class="menu-tab-btn" onclick="openMenuTab(event, 'tab-cay-sicak')">🫖 Çay & Sıcaklar</button>
+                <button class="menu-tab-btn" onclick="openMenuTab(event, 'tab-soguklar')">🍹 Soğuklar</button>
+                <button class="menu-tab-btn" onclick="openMenuTab(event, 'tab-tatli-atistirmalik')">🍰 Tatlı & Atıştırmalıklar</button>
+            </div>
 
-                <!-- Soğuk Kahveler -->
-                <div class="menu-category">
-                    <h3>🧋 Soğuk Kahveler</h3>
-                    <ul class="menu-list">
-                        <li>
-                            <div class="menu-item-info"><span>Ice Americano</span></div><span>120 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Ice Filtre Kahve</span></div><span>120 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Ice Latte</span></div><span>140 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Ice Caramel Latte</span></div><span>160 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Ice Lotus Latte</span></div><span>160 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Ice Mocha</span></div><span>160 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Ice White Chocolate Latte</span></div><span>160 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Ice Cappuccino</span></div><span>140 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Cortado</span></div><span>120 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Ice Macchiato</span></div><span>140 ₺</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Çaylar -->
-                <div class="menu-category">
-                    <h3>🫖 Çaylar</h3>
-                    <ul class="menu-list">
-                        <li>
-                            <div class="menu-item-info"><span>Çay</span></div><span>20 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Fincan Çay</span></div><span>40 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info">
-                                <span>Oralet</span>
-                                <span class="menu-item-desc">Portakal, Kivi, Kuşburnu, Nar</span>
-                            </div>
-                            <span>20 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Ihlamur</span></div><span>75 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Nane Limon</span></div><span>75 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Kış Çayı</span></div><span>75 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Kuşburnu Çayı</span></div><span>75 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Papatya Çayı</span></div><span>75 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Osmanlı Çayı</span></div><span>75 ₺</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Sıcak İçecekler -->
-                <div class="menu-category">
-                    <h3>♨️ Sıcak İçecekler</h3>
-                    <ul class="menu-list">
-                        <li>
-                            <div class="menu-item-info"><span>Sahlep</span></div><span>140 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Sıcak Çikolata</span></div><span>140 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Sıcak Beyaz Çikolata</span></div><span>140 ₺</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Soğuk İçecekler -->
-                <div class="menu-category">
-                    <h3>🧃 Soğuk İçecekler</h3>
-                    <ul class="menu-list">
-                        <li>
-                            <div class="menu-item-info">
-                                <span>Limonata</span>
-                                <span class="menu-item-desc">Ev Yapımı</span>
-                            </div>
-                            <span>100 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Churchill</span></div><span>100 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Su</span></div><span>15 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Sade Maden Suyu</span></div><span>30 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Meyveli Maden Suyu</span></div><span>35 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info">
-                                <span>Gazoz</span>
-                                <span class="menu-item-desc">Niğde, Beypazarı, Avşar</span>
-                            </div>
-                            <span>35 ₺</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Tatlılar -->
-                <div class="menu-category">
-                    <h3>🍰 Tatlılar</h3>
-                    <ul class="menu-list">
-                        <li>
-                            <div class="menu-item-info"><span>Magnolia</span></div><span>175 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Supangle</span></div><span>175 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Mozaik Pasta</span></div><span>200 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Cheescake</span></div><span>260 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Brownie</span></div><span>220 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info">
-                                <span>Cup Tatlılar</span>
-                                <span class="menu-item-desc">Lotus, Yaban Mersini, Çikolata</span>
-                            </div>
-                            <span>200 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>San Sebastian</span></div><span>280 ₺</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Atıştırmalıklar -->
-                <div class="menu-category">
-                    <h3>🥐 Atıştırmalıklar</h3>
-                    <ul class="menu-list">
-                        <li>
-                            <div class="menu-item-info"><span>Kuruyemiş</span></div><span>100 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Kaşarlı Tost</span></div><span>100 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Sucuklu Kaşarlı Tost</span></div><span>160 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info">
-                                <span>Meyve Bar</span>
-                                <span class="menu-item-desc">Tarım Kredi</span>
-                            </div>
-                            <span>60 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info">
-                                <span>Meyve Bar</span>
-                                <span class="menu-item-desc">Züber</span>
-                            </div>
-                            <span>90 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Servet Antep Fıstıklı Bar</span></div><span>90 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Servet Fındıklı Bar</span></div><span>60 ₺</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Kurabiyeler -->
-                <div class="menu-category">
-                    <h3>🍪 Kurabiyeler</h3>
-                    <ul class="menu-list">
-                        <li>
-                            <div class="menu-item-info"><span>Kakaolu Kurabiye</span></div><span>50 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Kremalı Kurabiye</span></div><span>70 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Tuzlu Kurabiye</span></div><span>40 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Ay Kurabiye</span></div><span>40 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Cookie</span></div><span>80 ₺</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Dondurmalar -->
-                <div class="menu-category">
-                    <h3>🍦 Dondurmalar</h3>
-                    <ul class="menu-list">
-                        <li>
-                            <div class="menu-item-info"><span>1 Top Dondurma</span></div><span>60 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Dondurma Kg</span></div><span>800 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Kornet Külah</span></div><span>10 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Kornet Tabak</span></div><span>20 ₺</span>
-                        </li>
-                        <li>
-                            <div class="menu-item-info"><span>Kağıt Helva Dondurma</span></div><span>200 ₺</span>
-                        </li>
-                    </ul>
+            <!-- TAB 1: KAHVELER -->
+            <div id="tab-kahveler" class="menu-tab-content active">
+                <div class="menu-grid">
+                    <!-- Sıcak Kahveler -->
+                    <div class="menu-category">
+                        <h3>☕ Sıcak Kahveler</h3>
+                        <ul class="menu-list">
+                            <li><div class="menu-item-info"><span>Espresso</span></div><span>100,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Americano</span></div><span>130,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Filtre Kahve</span></div><span>130,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Long Black</span></div><span>130,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Cafe Crema</span></div><span>130,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Macchiato</span></div><span>150,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Flat White</span></div><span>150,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Latte</span></div><span>150,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Cappucino</span></div><span>150,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Mocha</span></div><span>170,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>White Chocolate Mocha</span></div><span>170,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Caramel Latte</span></div><span>170,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Lotus Latte</span></div><span>170,00 ₺</span></li>
+                        </ul>
+                    </div>
+                    <!-- Soğuk Kahveler -->
+                    <div class="menu-category">
+                        <h3>🧋 Soğuk Kahveler</h3>
+                        <ul class="menu-list">
+                            <li><div class="menu-item-info"><span>Ice Latte</span></div><span>180,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Ice Caramel Latte</span></div><span>190,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Ice Lotus Latte</span></div><span>190,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Ice Mocha</span></div><span>190,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Ice White Chocolate Mocha</span></div><span>190,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Ice Cappucino</span></div><span>180,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Ice Macchiato</span></div><span>180,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Ice Americano</span></div><span>150,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Ice Filtre Kahve</span></div><span>150,00 ₺</span></li>
+                        </ul>
+                    </div>
+                    <!-- Türk Kahveleri -->
+                    <div class="menu-category">
+                        <h3>☕ Türk Kahveleri</h3>
+                        <ul class="menu-list">
+                            <li><div class="menu-item-info"><span>Türk Kahvesi</span></div><span>100,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Menengiç Kahvesi</span></div><span>100,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Dibek Kahvesi</span></div><span>100,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Damla Sakızlı Türk Kahvesi</span></div><span>100,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Çilekli Türk Kahvesi</span></div><span>100,00 ₺</span></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+
+            <!-- TAB 2: ÇAY & SICAKLAR -->
+            <div id="tab-cay-sicak" class="menu-tab-content">
+                <div class="menu-grid">
+                    <!-- Çaylar -->
+                    <div class="menu-category">
+                        <h3>🫖 Çaylar</h3>
+                        <ul class="menu-list">
+                            <li><div class="menu-item-info"><span>Çay</span></div><span>30,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Fincan Çay</span></div><span>50,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Oralet</span></div><span>30,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Bitki Çayı</span></div><span>100,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Küçük Termos</span></div><span>200,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Büyük Termos</span></div><span>400,00 ₺</span></li>
+                        </ul>
+                    </div>
+                    <!-- Sıcak İçecekler -->
+                    <div class="menu-category">
+                        <h3>♨️ Sıcak İçecekler</h3>
+                        <ul class="menu-list">
+                            <li><div class="menu-item-info"><span>Sıcak Çikolata</span></div><span>140,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Sahlep</span></div><span>140,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Sıcak Beyaz Çikolata</span></div><span>140,00 ₺</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: SOĞUKLAR -->
+            <div id="tab-soguklar" class="menu-tab-content">
+                <div class="menu-grid">
+                    <!-- Soğuk İçecekler -->
+                    <div class="menu-category">
+                        <h3>🧃 Soğuk İçecekler</h3>
+                        <ul class="menu-list">
+                            <li><div class="menu-item-info"><span>Meyveli Maden Suyu</span></div><span>50,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Su</span></div><span>20,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Avşar Gazoz</span></div><span>50,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Ayran</span></div><span>30,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Niğde Gazozu</span></div><span>50,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Limonata (Ev Yapımı)</span></div><span>130,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Churchill</span></div><span>100,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Sade Maden Suyu</span></div><span>40,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Erik Suyu (Ev Yapımı)</span></div><span>130,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Yarım Limonata</span></div><span>65,00 ₺</span></li>
+                        </ul>
+                    </div>
+                    <!-- Soğuk Kokteyller -->
+                    <div class="menu-category">
+                        <h3>🍹 Soğuk Kokteyller</h3>
+                        <ul class="menu-list">
+                            <li><div class="menu-item-info"><span>Berry Hibiscus</span></div><span>150,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Mr. Q</span></div><span>150,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Kuzu Kulağı</span></div><span>150,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Mango portakal</span></div><span>150,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Cool Lime</span></div><span>150,00 ₺</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 4: TATLI & ATIŞTIRMALIKLAR -->
+            <div id="tab-tatli-atistirmalik" class="menu-tab-content">
+                <div class="menu-grid">
+                    <!-- Tatlı ve Pastalar -->
+                    <div class="menu-category">
+                        <h3>🍰 Tatlı ve Pastalar</h3>
+                        <ul class="menu-list">
+                            <li><div class="menu-item-info"><span>Cup Tatlı</span></div><span>200,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>San Sebastian</span></div><span>280,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Magnolia</span></div><span>175,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Cheesecake</span></div><span>260,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Supangle</span></div><span>175,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Mozaik Pasta</span></div><span>200,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Brownie</span></div><span>220,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Affogato</span></div><span>200,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Aşure</span></div><span>175,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Tiramisu</span></div><span>250,00 ₺</span></li>
+                        </ul>
+                    </div>
+                    <!-- Kurabiyeler -->
+                    <div class="menu-category">
+                        <h3>🍪 Kurabiyeler</h3>
+                        <ul class="menu-list">
+                            <li><div class="menu-item-info"><span>Kakolu Kurabiye</span></div><span>50,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Kremalı Kurabiye</span></div><span>70,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Tuzlu Kurabiye</span></div><span>40,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Ay Kurabiye</span></div><span>40,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Cookie</span></div><span>100,00 ₺</span></li>
+                        </ul>
+                    </div>
+                    <!-- Atıştırmalıklar -->
+                    <div class="menu-category">
+                        <h3>🥐 Atıştırmalıklar</h3>
+                        <ul class="menu-list">
+                            <li><div class="menu-item-info"><span>Kuruyemiş</span></div><span>150,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Kaşarlı Tost</span></div><span>150,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Meyve Bar (Tarım Kredi)</span></div><span>60,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Meyve Bar (Züber)</span></div><span>90,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Meyve Bar (Servet)</span></div><span>90,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Karışık Tost</span></div><span>200,00 ₺</span></li>
+                        </ul>
+                    </div>
+                    <!-- Dondurmalar -->
+                    <div class="menu-category">
+                        <h3>🍦 Dondurmalar</h3>
+                        <ul class="menu-list">
+                            <li><div class="menu-item-info"><span>Dondurma kornet külah</span></div><span>10,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>boş kağıt helva</span></div><span>30,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>1 TOP</span></div><span>60,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>kornet tabak</span></div><span>20,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>Kağıt Helva Arası Dondurma</span></div><span>200,00 ₺</span></li>
+                            <li><div class="menu-item-info"><span>YARIM TOP</span></div><span>30,00 ₺</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -1710,6 +1641,22 @@
         }
 
         loadInstagramPosts();
+
+
+        // --- Tabs Logic ---
+        function openMenuTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("menu-tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            tablinks = document.getElementsByClassName("menu-tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
 
         // --- Scroll to Top & Reveal Animation Logic ---
         const scrollTopBtn = document.getElementById("scrollTopBtn");
